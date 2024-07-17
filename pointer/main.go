@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"math"
 )
 
 func pointer() {
@@ -36,12 +36,9 @@ func main() {
 	// pointer()
 	// pointer_test()
 	make_test()
-	file, err := os.Open("/home/rishabh/projects/Go/learning-go/pointer/main.go")
-	if err != nil {
-		fmt.Print(err)
-	}
-	file.ReadFrom()
-	fmt.Printf("file: %v\n", file)
-	var v = 12
-	fmt.Println(v)
+	a := 12
+	fmt.Print(a)
+	var x float32 = math.Pi
+	var y float64 = math.Pi
+	var z complex128 = math.Pi
 }
