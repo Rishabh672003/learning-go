@@ -24,9 +24,16 @@ func (l *Lili[T]) print() {
 	}
 }
 
+func (l *Lili[T]) isEmpty() bool {
+	if l.head == nil {
+		return true
+	}
+	return false
+}
+
 func (l *Lili[T]) addAtEnd(elem T) {
 	no := &Node[T]{elem, nil}
-	if l.head == nil {
+	if l.isEmpty() {
 		l.head = no
 	} else {
 		node := l.head
@@ -38,10 +45,36 @@ func (l *Lili[T]) addAtEnd(elem T) {
 	}
 }
 
+func (l *Lili[T]) addAtStart(elem T) {
+	no := &Node[T]{elem, nil}
+	if l.isEmpty() {
+		l.head = no
+	} else {
+		node := l.head
+		no.next = node
+		l.head = no
+	}
+}
+
+func (l *Lili[T]) removeAtIndex(n int) {
+	if l.isEmpty() {
+		return
+	}
+	node := l.head
+	count := 0
+	for node.next != nil && count != n {
+		node = node.next
+		count ++
+	}
+
+}
+
 func main() {
-	li := Lili[int64]{}
-	li.addAtEnd(12)
-	li.addAtEnd(12)
-	li.addAtEnd(12)
+	li := Lili[string]{}
+	li.addAtEnd("121")
+	li.addAtEnd("122")
+	li.addAtEnd("123")
+	li.addAtStart("69")
+	li.addAtStart("70")
 	li.print()
 }
