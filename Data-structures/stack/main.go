@@ -10,8 +10,8 @@ func (s *Stack[T]) push(elem T) {
 	s.arr = append(s.arr, elem)
 }
 
-func (s *Stack[T]) print() {
-	fmt.Println(s.arr)
+func (s *Stack[T]) String() string {
+	return fmt.Sprintf("%v\n", s.arr)
 }
 
 func (s *Stack[T]) pop() T {
@@ -43,15 +43,10 @@ func (s *Stack[T]) peek() T {
 
 func main() {
 	s := Stack[float32]{}
-	// s.push(12)
-	// s.push(12)
-	// s.push(12)
-	// s.push(12)
-	// s.print()
 	s.pop()
 	s.peek()
 	fmt.Print(s.isEmpty())
-	s.print()
 	s.push(12)
-	s.print()
+	fmt.Println(s)
+	// s.print()
 }
