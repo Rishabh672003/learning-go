@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func chan() {
 	chan1 := make(chan string, 2)
 	chan2 := make(chan string, 2)
 

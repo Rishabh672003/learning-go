@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"slices"
-	"sort"
 	"strings"
 )
 
@@ -13,7 +12,7 @@ type point struct {
 	num, denom float64
 }
 
-func (p* point) Print(){
+func (p *point) Print() {
 	fmt.Print(p.num, p.denom)
 }
 
@@ -71,9 +70,18 @@ func main() {
 	fmt.Println("2d: ", twoD)
 
 	var str_arr = []int{1, 2, 3, 4, 51, 2, 2}
-	fmt.Println(cap(twoD))
-	sort.Slice(str_arr, func(i, j int) bool {
-		return str_arr[i] < str_arr[j]
+	// fmt.Println(cap(twoD))
+	// sort.Slice(str_arr, func(i, j int) bool {
+	// 	return str_arr[i] < str_arr[j]
+	// })
+	slices.SortFunc(str_arr, func(a, b int) int {
+		if a < b {
+			return 1
+		} else if a > b {
+			return -1
+		} else {
+			return 0
+		}
 	})
 	fmt.Println(str_arr)
 
@@ -81,5 +89,5 @@ func main() {
 	in := bufio.NewReader(os.Stdin)
 	text, _ := in.ReadString('\n')
 	strings.Split(text, " ")
-	fmt.Print(string(text[0]))
+	fmt.Print(text)
 }

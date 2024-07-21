@@ -5,18 +5,22 @@ import (
 	"time"
 )
 
-func f(from string) {
-	for i := 0; i < 3; i++ {
-		fmt.Println(from)
+func main() {
+	now := time.Now()
+	defer func() {
+		fmt.Println(time.Since(now))
+	}()
+
+	smokeSignal := make(chan bool)
+	evilninja :=[]string{"tommy", "johnny"} 
+	for _, nin := range evilninja {
+		go attack(nin, smokeSignal)
+		fmt.Println(<-smokeSignal)
 	}
 }
 
-func main2() {
-	f("hello")
-	go f("world")
-
-	go func(msg string) {
-		fmt.Println(msg)
-	}("hello")
+func attack(s string, ss chan bool) {
 	time.Sleep(time.Second)
+	fmt.Println("throwing ninja stars at ", s)
+	ss <- true
 }
